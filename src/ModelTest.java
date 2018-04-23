@@ -24,7 +24,7 @@ class ModelTest {
     }
 
     @Test
-    void rand2() {  //проверяем, что число создается меньше 100 и больше 0
+    void rand2() {
         int minValue = 0;
         int maxValue = 100;
         int actualResult;
@@ -34,6 +34,22 @@ class ModelTest {
         for (int i = 0; i < 100; i++) {
             actualResult = model.rand(minValue, maxValue);
             if (actualResult == maxValue){
+                isRandCreatedHighLimitOfRange = true;
+            }
+        }
+        assertTrue(isRandCreatedHighLimitOfRange);
+    }
+    @Test
+    void rand4() {
+        int minValue = 0;
+        int maxValue = 100;
+        int actualResult;
+        Model model = new Model();
+        boolean isRandCreatedHighLimitOfRange=false;
+
+        for (int i = 0; i < 100; i++) {
+            actualResult = model.rand(minValue, maxValue);
+            if (actualResult == minValue){
                 isRandCreatedHighLimitOfRange = true;
             }
         }
