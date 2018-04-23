@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class View {
     Model model=new Model();
-    int number;
-    boolean t=false;
+    private   int number;
+    private boolean t=false;
     Scanner sc = new Scanner(System.in);
     public void showMenu(){
         System.out.println("Выберите игру:");
@@ -35,7 +35,6 @@ public class View {
                 System.out.println("Не правильный ввод");
                 System.out.println("Введите еще раз :");
                 sc = new Scanner(System.in);
-
             }
         }
 

@@ -9,6 +9,7 @@ public class Controller {
     ArrayList<Integer> nums = new ArrayList<>();  //лист для записи статистики
 
     public Controller(Model model) {
+
         this.model = model;
     }
 
@@ -45,7 +46,7 @@ public class Controller {
         }
     }
     public void statisctic(){
-        System.out.println("Статичстика. Все вводимые значения : ");
+        System.out.println("Статистика. Все вводимые значения : ");
         for (Integer i:nums){
             System.out.print(i+" ");
         }
