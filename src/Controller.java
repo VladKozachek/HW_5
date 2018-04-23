@@ -3,10 +3,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controller {
-    View view=new View();
+    View view = new View();
     Model model;
     Scanner sc = new Scanner(System.in);
     ArrayList<Integer> nums = new ArrayList<>();  //лист для записи статистики
+    int num;
+    int secretNumber;
+    boolean check = false;
 
     public Controller(Model model) {
 
@@ -15,41 +18,51 @@ public class Controller {
 
     public void startGame() {
         view.showMenu();
-        int secretNumber = view.secretNumber();
-        boolean test = false;
-        int num;
-        while (test == false) {
+        secretNumber = view.secretNumber();
+
+        while (check == false) {
             try {
                 System.out.println("Введите число :");
                 num = sc.nextInt();
-                if (num >= model.RAND_MIN && num <= model.RAND_MAX) {
-                    nums.add(num);
-                    if (secretNumber == num) {
-                        test = true;
-                        System.out.println("Число угадали!");
-                    } else {
-                        if (num < secretNumber) {
-                            System.out.println("Не угадали, загаданое число больше");
-                        } else {
-                            System.out.println("Не угадали,загаданое число меньше");
-                        }
-                        test = false;
-                    }
+                if (num >= model.randMin && num <= model.randMax) { // проверка, чтобы число не било больше диапазона
+                    nums.add(num);  //записываем числа в лист для истории
+                    checkGuessed();
                 } else {
                     System.out.println("Не правильный ввод");
                 }
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Не правильный ввод");
-               sc=new Scanner(System.in);
+                sc = new Scanner(System.in);
             }
         }
     }
-    public void statisctic(){
+
+    public void statisctic() {
         System.out.println("Статистика. Все вводимые значения : ");
-        for (Integer i:nums){
-            System.out.print(i+" ");
+        for (Integer i : nums) {
+            System.out.print(i + " ");
         }
     }
+
+    public void messageMoreLess() {
+
+        if (num < secretNumber) {
+            System.out.println("Не угадали, загаданое число больше");
+        } else {
+            System.out.println("Не угадали,загаданое число меньше");
+        }
+
+    }
+
+    public void checkGuessed() {
+        if (secretNumber == num) {
+            check = true;
+            System.out.println("Число угадали!");
+        } else {
+            messageMoreLess();
+            check = false;
+        }
+    }
+
 
 }

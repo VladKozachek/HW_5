@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ModelTest {
     @Test
     void rand() {
-        Model model=new Model();
-        int n = model.rand(9,9);
-        assertEquals(9,n);
+        Model model = new Model();
+        int n = model.rand(9, 9);
+        assertEquals(9, n);
     }
 
     @Test
@@ -29,27 +29,28 @@ class ModelTest {
         int maxValue = 100;
         int actualResult;
         Model model = new Model();
-        boolean isRandCreatedHighLimitOfRange=false;
+        boolean isRandCreatedHighLimitOfRange = false;
 
         for (int i = 0; i < 100; i++) {
             actualResult = model.rand(minValue, maxValue);
-            if (actualResult == maxValue){
+            if (actualResult == maxValue) {
                 isRandCreatedHighLimitOfRange = true;
             }
         }
         assertTrue(isRandCreatedHighLimitOfRange);
     }
+
     @Test
     void rand4() {
         int minValue = 0;
         int maxValue = 100;
         int actualResult;
         Model model = new Model();
-        boolean isRandCreatedHighLimitOfRange=false;
+        boolean isRandCreatedHighLimitOfRange = false;
 
         for (int i = 0; i < 100; i++) {
             actualResult = model.rand(minValue, maxValue);
-            if (actualResult == minValue){
+            if (actualResult == minValue) {
                 isRandCreatedHighLimitOfRange = true;
             }
         }
